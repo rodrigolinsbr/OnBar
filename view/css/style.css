@@ -1,31 +1,67 @@
 body{
+
 	
+
 	background-image: url("../images/noisy_grid/noisy_grid.png");
+
 }
+
 #container{
+
 	width: 950px;
+
 	height: 400px;
+
 	position: absolute;
+
 	left: -475px;
+
 	margin-left: 50%;
+
 	top: 150px;
+
 	
+
 	
+
 }
+
 .mesa{
+
 	padding: 10px;
+
 	cursor: pointer;
+
 }
+
+
 
 #inicio{
+
 	height: 400px;
+
 }
+
+
 
 .btn-group{
-	position: absolute;
-	left: 700px;
+
+	position: relative;
+
+	
+
 }
+
 .image_front{
+
     width: 400px;
 
+
+
+}
+#dialog{
+	display: none;
+}
+#dialog_mesa_ocupada{
+	display: none;
 }

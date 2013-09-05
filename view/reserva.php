@@ -1,82 +1,94 @@
- <img class="mesa"src="images/mesa_red.png" title="1">01
-  <img class="mesa"src="images/mesa_red.png" title="2">02
-  <img class="mesa"src="images/mesa_green.png" title="3">03
-  <img class="mesa"src="images/mesa_green.png" title="4">04
-  <img class="mesa"src="images/mesa_green.png" title="5">05
-  <img class="mesa"src="images/mesa_green.png" title="6">06
-  <img class="mesa"src="images/mesa_green.png" title="7">07
-  <img class="mesa"src="images/mesa_green.png" title="8">08
-  <img class="mesa"src="images/mesa_green.png" title="9">09
-  <img class="mesa"src="images/mesa_red.png" title="10">10
-  <img class="mesa"src="images/mesa_red.png" title="11">11
-  <img class="mesa"src="images/mesa_red.png" title="12">12
-  <img class="mesa"src="images/mesa_red.png" title="13">13
-  <img class="mesa"src="images/mesa_red.png"title="14" >14
-  <img class="mesa"src="images/mesa_red.png"title="15">15
+
+
   <br><br>
 
+
+
   <a  href="index.php" class="btn  btn-default "><i class="icon-arrow-left"></i> Voltar</a>
-  <form method="post" name="form1" action="index.php?pagina=13">
+ <div id="dialog" class="dialog" title="Reserva">
+  <form class="form_reserva" method="post" name="form1" action="index.php?pagina=13">
+
     <table>
+
         <tr>
-            <h1>Reservar Mesa</h1>
+
+            <h3>Reservar Mesa</h3>
+
         </tr>
+
         <tr>
+
             <td><label for="cpfCliente">Cpf Cliente : </label></td>
-            <td><input name="cpfCliente" type="text" size="15"></td>
+
+            <td><input name="cpfCliente" type="text" size="15" value="<?php if(isset($_GET['cpf'])){echo $_GET['cpf'];}?>" ></td>
+
         </tr>
+
         <tr>
+
+            <td><label for="senha">Senha: </label></td>
+
+            <td><input name="senha"  type="password" size="1" value =""></td>
+
+        </tr>
+
+        <tr>
+
             <td><label for="numMesa">Numero da Mesa: </label></td>
-            <td><input name="numMesa" disabled="disabled" class="mesa_input" type="text" size="2" value =""></td>
+
+            <td><input name="numMesa" class="mesa_input" type="text" size="2" value =""></td>
+
         </tr>
+
         <tr>
-            <td  valign="middle" align="center" colspan="2"><input type="submit" value="Cadastra Cliente"></td>
+
+            <td  valign="middle" align="center" colspan="2"><input type="submit" value="Reservar Mesa"></td>
+
             <td></td>
+
         </tr>
+
     </table>
+
 </form>
+</div>
+<div id="dialog_mesa_ocupada" class="dialog" title="Reserva">
+    <h3> Mesa ocupada!</h3>
+</div>
+
+
+
+
 
  <script type="text/javascript">
+
     $(".mesa").click(function(){
-     var mesa= this.title;
-     var image=this.src;
-   
-     if(image=='http://localhost/onBar/view/images/mesa_red.png'){
-      alert("mesa ocupada campeão");
-    }
-      else{
-         $(".mesa_input").attr('value', mesa);
+      var mesa= this.title;
+      var image=this.src;
+
+     if(image=='http://www.camaleonsolucoes.com.br/clientesx/onbar/view/images/mesa_red.png'){
+           $("#dialog").hide();
+           $("#dialog_mesa_ocupada").dialog({
+                modal: true,
+                buttons: {
+                Ok: function() {
+                $( this ).dialog( "close" );
+                }
+                }
+          });
+   }
+    else{
+
+        $(".mesa_input").attr('value', mesa);
+        $("#dialog").dialog({
+         
+            width: 450,
+            show: "fade",
+            hide: "fade",
+            modal: true
+        });
+
       }
-     
-   
+
 });
-
-  </script>
-
-<form method="post" name="form1" action="index.php?pagina=11">
-    <table>
-        <tr>
-            <h1>Cadastrar Usuário</h1>
-        </tr>
-        <tr>
-            <td><label for="nome">Nome : </label></td>
-            <td><input name="nome" type="text" size="50"></td>
-        </tr>
-        <tr>
-            <td><label for="cpf">Cpf : </label></td>
-            <td><input name="cpf" type="text" size="15"></td>
-        </tr>
-        <tr>
-            <td><label for="email">Email : </label></td>
-            <td><input name="email" type="text" size="30"></td>
-        </tr>
-        <tr>
-            <td><label for="senha">Senha : </label></td>
-            <td><input name="senha" type="password" size="10"></td>
-        </tr>
-        <tr>
-            <td  valign="middle" align="center" colspan="2"><input type="submit" value="Cadastra Cliente"></td>
-            <td></td>
-        </tr>
-    </table>
-</form>
+</script>
